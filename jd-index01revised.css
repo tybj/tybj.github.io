@@ -1,0 +1,777 @@
+
+/* **************页面整体布局 *******************************/
+/*开发者参考局布框,未来做完一块清除一块*/
+/*#top,*/
+/*#top_main,*/
+/*#nav,*/
+/*#banner,*/
+/*#foot-box,*/
+/*#footer*/
+#main,{
+    border:1px solid black;
+}
+
+
+/* *********************以下为通用布局 *********************  */
+#top,#top_main,#nav,#banner,#main,#foot-box,#footer{
+    width: 1211px;
+    margin:0 auto;}
+*{
+    box-sizing:border-box;
+}
+body{
+    font:12px "microsoft yahei", arial helvetica, sans-serif;
+    color:#666;
+}
+body,h1,h2,h3,h4,h5,h6,pre,p,ul,ol,dl,dd{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+/*浮动，清除浮动的“类”定义，快速引用时用*/
+.lf{float:left;}
+.rt{float:right;}
+.clear{clear:both;}
+
+/*锚点a的主要样式*/
+a{
+    color:#666;
+    text-decoration:none;
+}
+/*锚点a的主要状态样式*/
+a:hover{
+    color:#ff0700;
+    text-decoration:underline;
+}
+
+/* *****************************1、页面顶部  ************************************  */
+#top{
+    /*高度，行高，背景颜色，下边框*/
+    height:30px;
+    line-height:30px;
+    background-color:#f7f7f7;
+    border-bottom:1px solid #eee;
+}
+/* 星图浮动后，需要利用margin调整位置*/
+#top>img{
+    float:left;
+    margin:8px 5px 0 0;
+}
+
+#top>ul>li{
+    float:left;
+}
+#top>ul>li>b{
+    border-left:1px solid #ddd;
+    margin:0 5px;
+}
+
+#top li.vip a{
+    /* 左内边距， 背景*/
+    padding-left: 29px;
+    background: url(image/jd-project1/vip.jpg) no-repeat 0 center;
+}
+
+#top li.bd a{
+    /* 左内边距， 背景*/
+    padding-left: 26px;
+    background: url(image/jd-project1/dakehu.jpg) no-repeat 0 center;
+}
+#top li.phone a{
+    /* 需要改"a"元素的高度左内边距， 背景*/
+    display: inline-block;
+    height:22px;
+    line-height:22px;
+    padding-left: 18px;
+    background: url(image/jd-project1/iconlist_2.png) no-repeat -128px -360px;
+}
+
+#top li.phone a:hover{
+    background: url(image/jd-project1/iconlist_2.png) no-repeat -128px -399px;
+}
+
+#top li.services>a{
+    /* 需要改"a"元素的高度,左内边距， 右侧背景小箭头 hover*/
+    display: inline-block;
+    height:28px;
+    line-height:28px;
+    padding: 0 15px;
+    border: 1px solid transparent;
+    background: url(image/jd-project1/jt_down.jpg) no-repeat 95% center;}
+
+/*#top li.services>a:hover{*/
+    /*!*背景色白 , 左上右边框，下箭头*!*/
+    /*background: url(image/jd-project1/jt_up.jpg)no-repeat 95% center;*/
+    /*border: 1px solid #ddd;*/
+    /*border-bottom:none;*/
+    /*background-color:#fff;*/
+/*}*/
+#top li.services{
+    /*配合 servicesitems的绝对定位*/
+    position: relative;
+}
+
+#serviceitems{
+    /* 左右下边框，背景色，宽度，内容水平居中对齐*/
+    width:80px;
+    border:1px solid #ddd;
+    border-top:none;
+    background-color:#fff;
+    text-align:center;
+    position:absolute;
+    top:28px;
+    left:11px;
+display:none;
+}
+
+#top li.services:hover #serviceitems{
+    /* 左右下边框，背景色，宽度，内容水平居中对齐*/
+display:block;
+}
+
+#top li.services:hover>a{
+    /*背景色白 , 左上右边框，下箭头*/
+    background: url(image/jd-project1/jt_up.jpg)no-repeat 95% center;
+    border: 1px solid #ddd;
+    border-bottom:none;
+    background-color:#fff;
+}
+
+/*  *******************************2、LOGO和搜索框 ****************************** */
+
+#top_main{
+    padding: 10px 0;
+}
+
+/* 搜索框*/
+#search-box{
+    /*左浮动，宽度，最小高度，左右外边距*/
+    float:left;
+    width: 500px;
+    min-height: 30px;
+    margin: 0 80px 0 40px;
+}
+#search-box div.search{
+    height: 30px;
+    background-color:#e4393c;
+    /*加边框*/
+    border: 3px solid #e4393c;
+    /*因为通用设置了 box-sizing: border-boox, 此处需要取消此设置，否则边框显示不全*/
+    box-sizing:content-box;
+}
+#search-box button{
+    /*宽度，高度，取消边框，背景色*/
+    height:28px;
+    width:80px;
+    border:none;
+    background-color:#e4393c;
+    /* 文字：颜色，大小，加粗*/
+    color:#fff;
+    font-size:14px;
+    font-weight:bold;
+}
+#search-box div.search input{
+    /* 宽度，高度，去掉边框，左右内边距*/
+    width:410px;
+    height:30px;
+    border:none;
+    padding: 0 5px;
+
+}
+
+/* 搜索热词*/
+#search-box div.hot-words{
+    margin-top:5px;
+    /*实现溢出处理，首先要限制此区域的长宽*/
+    height:16px;
+    overflow: hidden;
+    /*!* 文本颜色, 但注意字体颜色在此处只能改span,改不了a,因为
+    a 受通用设置的控制，所以要为 span后的 a 再设置一次*!*/
+    color:#999;
+}
+#search-box div.hot-words a{
+    color:#999;
+}
+
+/* 我的猫猫乐*/
+#myMML{
+    /* 左浮动，边框，背景色，高度，左内边距，右内边距*/
+    float: left;
+    border: 1px solid #efefef;
+    /*background-color:#f7f7f7;*/
+    height:32px;
+    padding-left: 27px;
+    padding-right:5px;
+    line-height: 30px;
+    background: #f7f7f7 url(image/jd-project1/iconlist_2.png) no-repeat -116px -25px;
+    /*要高置出多几个字的总宽度，给做下箭头的<b>留出位置，因为<b>自身没有宽度，
+    只有高度，所以不占位置，如果只有“我的猫猫乐”的内容宽度，则<b>就在第二行显示了*/
+    width: 109px;
+
+}
+#myMML b{
+    /*边框透明， 上边框#ddd*/
+    border:5px solid transparent;
+    border-top-color:#ddd;
+    /*上下调<b>需要做个相对定位*/
+    position:relative;
+    top: 12px;
+
+}
+#myMML:hover{
+    background:#fff url(image/jd-project1/iconlist_2.png) no-repeat -116px -55px;
+}
+
+/* 去购物车结算*/
+#shopping-car{
+    /* 左浮动，边框，背景色，高度，左内边距，右内边距*/
+    float: left;
+    margin-left: 25px;
+    border: 1px solid #efefef;
+    /*background-color:#f7f7f7;*/
+    height:32px;
+    padding-left: 27px;
+    padding-right:5px;
+    line-height: 30px;
+    background: #f7f7f7 url(image/jd-project1/iconlist_2.png) no-repeat -116px -84px;
+    width:121px;
+
+}
+#shopping-car b{
+    /*边框透明， 上边框#ddd*/
+    border:5px solid transparent;
+    border-top-color:#ddd;
+    /*上下调<b>需要做个相对定位*/
+    position:relative;
+    top: 12px;
+
+}
+#shopping-car:hover{
+    background: #fff url(image/jd-project1/iconlist_2.png) no-repeat -116px -116px;
+}
+
+/*  *******************************3、主导航 ********************************** */
+
+#nav{
+    width:1211px;
+    height:40px;
+    background-color: #e64346;
+}
+
+#nav p{
+    /*宽度，高度，行高，背景，左浮动*/
+    float:left;
+    width: 210px;
+    height: 40px;
+    line-height:40px;
+    background-color: #cd2a2c;
+
+    /*以下的文本标记应该做给"a"*/
+    /*color:#fff;*/
+    /*font-size:14px;*/
+    /*font-weight:bold;*/
+}
+
+#nav>p a{
+    /*文字大小，加粗，颜色，取消下划线，左内边距*/
+    font-size:14px;
+    color:#fff;
+    font-weight:bold;
+    text-decoration: none;
+    padding-left:15px;
+}
+
+#nav>ul{
+    float:left;
+    }
+
+#nav>ul>li{
+    float:left;
+}
+
+#nav>ul>li>a{
+    /*设置为行内内/块级，宽度，高度，行高，颜色，大小，取消下划线*/
+    display: inline-block;
+    width:100px;
+    height:40px;
+    line-height:40px;
+    font-size: 14px;
+    font-weight:bold;
+    text-decoration:none;
+    color:#fff;
+    text-align: center;
+   }
+
+#nav>ul>li>a:hover{
+    background-color:#bd2a2c;
+}
+
+
+/*  *******************************4、banner广告部份 1211px x 410px ********** */
+#banner{
+    width:1211px;
+    height:410px;
+}
+/*  ***************1、主分类 210px x 410px ********** */
+#cate-box{
+    /*左浮动，宽度，高度，边框，背景色*/
+    float:left;
+    width:210px;
+    height:410px;
+    background-color:#f7f7f7;
+    border: 2px solid #ce2a2c;
+    border-top:none;
+    padding-top:5px;
+}
+
+#cate-box>li>a{
+    /*块级元素，宽度，上下左内边距，上下边框，文本：大小，颜色，取消下划线*/
+    display: block;
+    width:196px;
+    padding: 5px 0 5px 10px;
+    border-top: 1px solid transparent;
+    border-bottom:1px solid #fff;
+    font-size:14px;
+    color:#333;
+    text-decoration:none;
+}
+
+#cate-box>li>a:hover{
+    background-color:#fff;
+    border-color:#ddd;
+    position:relative;
+    z-index:30;
+}
+
+/*  **********主分类 的关联弹出框 ******** */
+#cate-box{
+    position:relative;
+}
+#subcate-box{
+    /*宽度，高度，边框，背景，定位，位置，内边距*/
+    width: 720px;
+    min-height: 300px;
+    border: 1px solid #ddd;
+    background-color:#fff;
+    padding: 5px;
+    position:absolute;
+    left:194px;
+    top:0px;
+    z-index:10;
+    display:none;
+}
+#cate-box:hover #subcate-box{
+    /*弹出框的弹出指令的标记命令必须是其定位用的父元素，此处为"#cate-box"
+    不能是"li" , 另外注意 hover后边要给出弹出框的id名字*/
+    display:block;
+}
+/* ****subcate-box右上角的关闭按钮******   */
+#subcate-box div.close{
+    /*宽度，高度，背景，倒角，文本：大小，颜色，加粗，
+    水平居中，垂直居中行高*/
+    width:20px;
+    height:20px;
+    line-height:20px;
+    border-radius:50%;
+    background-color:#555;
+    text-align: center;
+    color:#fff;
+    font-weight:bold;
+    position:absolute;
+    top:-10px;
+    right:-10px;
+    cursor:pointer;
+}
+
+/** ****subcate-box内的分类内容**********  */
+
+#cate-box div.subcate-items{
+    float:left;
+    width;500px;
+    min-height:100px;
+}
+#subcate-box div.subcate-items ul{
+    /*float:left; 此处 ul不需要float, 自成一行*/
+    /* 用overflow:hidden/auto 撑起高度*/
+    overflow:hidden;
+    border-top:1px solid #ddd;
+    padding:5px 0;
+
+}
+#subcate-box div.subcate-items li{
+    /* 左浮动，左边框，左右内边框，上下内边距*/
+    float:left;
+    border-left: 1px solid #ddd;
+    padding: 3px 5px;
+}
+
+#subcate-box div.subcate-items li.title{
+    /*宽度，取消左边框，文本右对齐，文字颜色，加粗，下划线*/
+    border-left:none;
+    width: 70px;
+    text-align:right;
+    font-weight:bold;
+    text-decoration:underline;
+}
+#subcate-box div.subcate-items li.title a{
+    color: #e4393c;
+}
+
+/** ****subcate-box内的分类banner********* */
+#subcate-box div.subcate-banner{
+    width:194px;
+    min-height:100px;
+    float:right;
+    margin-right:15px;
+}
+#subcate-box div.subcate-banner p{
+    margin-top:10px;
+}
+
+#subcate-box div.subcate-banner h4{
+    margin: 5px 0;
+    color:  #e4393c;
+      }
+
+#subcate-box div.subcate-banner ul.bookstorelist li{
+    margin: 5px 0px;
+}
+#subcate-box div.subcate-banner ul.bookstorelist li a:hover{
+    color:#555;
+}
+
+/*  ***************2、滑动广告 ********************** */
+img{
+    vertical-align:bottom;
+}
+#sliderbox{
+    /*宽度，高度，左浮动，上左外边距*/
+    float:left;
+    width:670px;
+    height:400px;
+    margin:10px 0px 0 10px;
+}
+
+#slider li{
+    /*宽度，高度，倒角，背景，
+    文字：水平居中，行高，大小，颜色，加粗，外边距*/
+    float:left;
+    width:20px;
+    height:20px;
+    border-radius: 50%;
+    background-color:#3e3e3e;
+    margin-right: 10px;
+    color: #fff;
+    line-height:20px;
+    text-align:center;
+}
+#slider li:hover{
+    background-color:#e4393c;
+    cursor:pointer;
+}
+#slider{
+    position:relative;
+}
+
+#slider ul{
+    position: absolute;
+    top:88%;
+    right:10px;
+}
+
+/*  ***************2、滑动广告--3个小广告 *********** */
+
+#threead{
+    width:670px;
+    height:160px;
+    border:1px solid #ddd;
+    border-top:none;
+}
+#threead>a{
+    /*左浮动，宽度，高度，背景，上外边距*/
+    float:left;
+    width:25px;
+    height:35px;
+    background: url(image/jd-project1/index/ad-arraw.png);
+    margin-top:62px;
+}
+
+#threead>a.next{
+    background-position:0 -36px;
+    float:right;
+}
+
+#threead>a:hover{
+    background-image:url(image/jd-project1/index/ad-arraw-hover.png);
+}
+
+#threead li{
+    /* 左浮动，宽度，内容水平居中，上下内边距*/
+    float:left;
+    width:205px;
+    text-align:center;
+    padding:10px 0;
+}
+
+#threead li.mid{
+    /*宽度，边框*/
+    width:208px;
+    border: 1px solid #ddd;
+    border-top:none;
+    border-bottom:none;
+
+}
+/*  ***************3、京东快报等 ******************** */
+
+#extra-focus{
+    float:right;
+    width:310px;
+    height:400px;
+    margin-top:10px;
+ }
+
+#news p a{
+    float:right;
+    color:#005aa0;
+}
+
+#news p b{
+    font-size:14px;
+    font-weight: bold;
+}
+
+#news p{
+    padding:10px 0 5px 0;
+}
+
+#news>div{
+    /*上下左右边框，上边框加粗，min-height, 上下内边距*/
+    border:1px solid #ddd;
+    border-top:2px solid #aaa;
+    min-height:100px;
+    padding: 4px 0;
+    overflow:hidden;
+}
+
+#news>div ul{
+    width:154px;
+    padding: 0 10px;
+    line-height:25px;
+}
+
+#news>div ul.rt{
+    border-left:1px solid #ddd;
+}
+
+#news{
+    margin-bottom:10px;
+}
+
+/* ********* 8个图标区 虚拟相关 ************/
+#virtuals{
+    /*宽度，高度，左，上边框*/
+    width:310px;
+    height:175px;
+    border:1px solid #ddd;
+    border-right:none;
+    border-bottom:none;
+    margin-top: 12px;
+    }
+#virtuals li{
+    /*宽度，高度，左浮动，右下边框*/
+    width:77.25px;
+    height:87px;
+    float:left;
+    border-right:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+}
+
+/* ********* 把LI内的标记都转化成块级元素，就可以设置尺寸和margin了 *********** */
+#virtuals a{
+    display:block;
+    text-align:center;
+}
+
+#virtuals b{
+    /* 块级，宽度，高度（此处选取一个图片为参照），上下外边距，水平居中对齐*/
+    display:block;
+    width:42px;
+    height:29px;
+    background-image:url(image/jd-project1/index/virtuals-20140606.png);
+    background-repeat:no-repeat;
+    /* 此处background不合并命令，是因为后续要个别更换指令参数,
+    而此命令的权值太重，后边的修改权值PK不过这个命令*/
+    margin:10px auto;
+}
+/* **补充其他7个图标的嵌入位置  ********* */
+li.airticket b{
+    background-position: 0 -49px;
+}
+
+li.travel b{
+    background-position: -63px 0;
+}
+
+li.movie b{
+    background-position: -63px -49px;
+}
+
+li.lottery b{
+    background-position: -126px 0;
+}
+
+#virtuals li.wealth b{
+    background-position: -126px -49px;
+    height: 36px;
+    margin:7px auto;
+}
+
+li.game b{
+    background-position: -179px 0;
+}
+
+li.life b{
+    background-position: -179px -49px;
+}
+
+#virtuals i{
+    /*块级，宽度，高度，上边框，水平居中对齐*/
+    display:block;
+    width:0;
+    height:0;
+    border:4px solid transparent;
+    border-top-color: #ff0700;
+    margin:8px auto;
+    text-align: center;
+}
+
+
+
+
+
+
+/*  *******************************5、页面主体  ******************************* */
+
+
+
+/*  *******************************6、页面底部--购物指南 ********************** */
+
+#foot-box{
+    width:1211px;
+    min-height:180px;
+    margin: 10px 0;
+    }
+
+#foot-box>div{
+    float:left;
+    width:242px;
+    height:200px;
+    margin: 10px 0;
+    }
+#foot-box i{
+    float:right;
+    width:40px;
+    height:42px;
+    background-image:url(image/jd-project1/iconlist_2.png);
+    background-position: 0 -56px;
+    background-repeat: no-repeat;
+    padding-top:10px 10px 0 50px;
+
+}
+
+#foot-box i.delivery{
+    background-position: -50px -56px;
+    background-repeat: no-repeat;
+}
+
+#foot-box i.payment{
+    background-position: 0px -102px;
+    background-repeat: no-repeat;
+}
+
+#foot-box i.postservice{
+    background-position: -50px -102px;
+    background-repeat: no-repeat;
+}
+
+#foot-box i.specific{
+    background-position: 0px -143px;
+    background-repeat: no-repeat;
+}
+
+#foot-box ul{
+    float:right;
+    width: 142px;
+    height:200px;
+    margin-top:5px;
+}
+#foot-box li{
+    height: 20px;
+    line-height:20px;
+    padding-left:5px;
+
+}
+
+#foot-box>div>ul>li.helpitems{
+    font-size:14px;
+    font-weight:bold;
+}
+
+/*  *******************************7、页面底部--备案号等  ********************* */
+
+#footer>ul{
+    margin: 30px 0 30px 105px;
+
+}
+#footer li{
+    float: left;
+    width: 100px;
+    text-align: center;
+    font-size:15px;
+
+}
+
+#footer ul.textlink b{
+    border-right:2px solid #ddd;
+    margin-left:18px;
+}
+
+#footer>p{
+    width:1211px;
+    min-height: 100px;
+    margin-top: 80px;
+}
+
+#footer span{
+    clear:both;
+    text-align: center;
+    display: block;
+    min-height: 100px;
+    line-height: 25px;
+    font-size:14px;
+
+}
+#footer>p>span>b{
+    border-left: 1px solid darkgray;
+    margin: 0 5px;
+}
+
+#foot-photos li{
+    float:left;
+    width:112px;
+    height:40px;
+    margin: 20px 20px;
+}
+
+#foot-photos ul{
+    margin-left:311px;
+}
+
+#footer{
+    border-top: 1px solid #ddd;
+}
+
+
+
+
+

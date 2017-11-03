@@ -1,0 +1,73 @@
+
+/* **************页面整体布局 *******************************/
+/*开发者参考局布框,未来做完一块清除一块*/
+/*#top,*/
+#top_main,#nav,#banner,#main,#foot-box,#footer{
+    border:1px solid black;
+}
+
+
+/* *********************以下为通用布局 *********************  */
+#top,#top_main,#nav,#banner,#main,#foot-box,#footer{
+    width: 1211px;
+    margin:0 auto;}
+*{
+    box-sizing:border-box;
+}
+body{
+    font:12px "microsoft yahei", arial helvetica, sans-serif;
+    color:#666;
+}
+body,h1,h2,h3,h4,h5,h6,pre,p,ul,ol,dl,dd{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+/*浮动，清除浮动的“类”定义，快速引用时用*/
+.lf{float:left;}
+.rt{float:right;}
+.clear{clear:both;}
+
+/*锚点a的主要样式*/
+a{
+    color:#666;
+    text-decoration:none;
+}
+/*锚点a的主要状态样式*/
+a:hover{
+    color:#ff0700;
+    text-decoration:underline;
+}
+
+/* *********************1、页面顶部  *********************  */
+#top{
+    /*高度，行高，背景颜色，下边框*/
+    height:30px;
+    line-height:30px;
+    background-color:#f7f7f7;
+    border-bottom:1px solid #eee;
+}
+/* 星图浮动后，需要利用margin调整位置*/
+#top>img{
+    float:left;
+    margin:8px 5px 0 0;
+}
+
+#top>ul>li{
+    float:left;
+}
+#top>ul>li>b{
+    border-left:1px solid #ddd;
+    margin:0 5px;
+}
+
+
+#top a.BD img{
+    margin-top: 9px 5px 0 0;
+}
+#top .vip img{
+    margin-top: 9px 5px 0 0;
+}
+#top .phone img{
+    margin-top: 3px 5px 0 0;
+}
